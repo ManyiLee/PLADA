@@ -1,0 +1,93 @@
+
+#["car","cat","chair","horse"] 4-Class
+#["chair","horse"] 2-Class
+
+#base options
+mode: "binary"
+arch: "res50"                                  #architecture for binary classification
+dataroot: "your path" #path to images (should have subfolders trainA, trainB, valA, valB, etc)
+classes: ["chair","horse"]                    #image classes to train on
+class_bal: True
+batch_size: 32                                #input batch size
+loadSize: 256                                  #scale images to this size
+cropSize: 224                                  #then crop to this size
+device_ids: [0,1]                             #gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU
+name: "test"                         #name of the experiment. It decides where to store samples and models
+num_threads: 16                                #threads for loading data
+checkpoints_dir: "./checkpoints/"                #models are saved here
+serial_batches: True                           #if true, takes images in order to make batches, otherwise takes them randomly
+resize_or_crop: "scale_and_crop"               #scaling and cropping of images at load time [resize_and_crop|crop|scale_width|scale_width_and_crop|none]
+no_flip: True                                  #if specified, do not flip the images for data augmentation
+init_type: "normal"                            #network initialization [normal|xavier|kaiming|orthogonal]
+init_gain: 0.02                                #scaling factor for normal, xavier and orthogonal
+suffix: ""                                     #customized suffix: opt.name = opt.name + suffix: e.g., {model}_{netG}_size{loadSize}
+
+#for data augmentation
+rz_interp: ["bilinear"]
+blur_prob: 0.5
+blur_sig: [0,3]
+
+#jpg_prob: 0.2
+#jpg_method: ["cv2"]
+#jpg_qual: [30,100]
+
+#test options
+no_resize: True
+no_crop: False
+eval: True                                    #use eval mode during test time
+
+#train options
+isTrain: True
+epoch: 10                                
+earlystop_epoch: 3
+data_aug: True                                #if specified, perform additional data augmentation (photometric, blurring, jpegging)
+optim: "adam"                                 #optim to use [sgd, adam]
+new_optim: True                               #new optimizer instead of loading the optim state
+loss_freq: 400                                #frequency of showing loss on tensorboard
+save_latest_freq: 2000                        #frequency of saving the latest results
+save_epoch_freq: 20                           #frequency of saving checkpoints at the end of epochs
+continue_train: False                         #continue training: load the latest model
+continue_epoch: -1                             #the starting epoch count, we save the model by <epoch_count>, <epoch_count>+<save_latest_freq>, ...
+load_path: "your path"                                 #continue trainning, model Path
+train_split: "train/NoCmp"                          #train, val, test, etc
+val_split: "val/RandomCmp"                              #train, val, test, etc
+beta1: 0.9                                    #momentum term of adam
+
+lr: 0.0002                                    #initial learning rate for adam
+weight_decay: 0.0001                            
+alpha: 1.0
+momentum: 0.9
+delr_freq: 10
+
+adv_warmup: 0
+
+B2E:
+  Train_random: True 
+  Test_Prompt_AVG: "Full"                    #Full、Half、No
+  pool_size: 8                               #prefix_pool_size
+  prompt_length: 2                          #for begin add prompt
+  num_tokens: 257                           #fixed arg
+  num_features: 1024                        #for begin add prompt's feature
+
+  RG:
+    vision_stack_layers: 24                 #num of having prefix layers , maxmum 24
+    language_stack_layers: 8
+    vision_ctx: 32                          #prefix_len   
+    language_ctx: 8                            
+    batchwise_prompt: True
+
+  CG:
+    mlp_ratio: 3.0
+    drop_rate: 0.25
+    dpr: 0.25
+    stack_layers: 2
+    comp_out: 64
+
+ODA:
+  dist: "L2" #L1 L2, cosin，KL, JS
+
+#experiment setting
+agnostic: "StaticCmp" #test data, 'RandomCmp'、'StaticCmp'、'NoCmp'
+mode: "20%StaticCmp" #train data, '10%RandomCmp', '20%RandomCmp', '30%RandomCmp', '50%RandomCmp', '20%StaticCmp'
+eval_list: ["5Diffusions", "8Diffusions"] # '8GANs', '9GANs', '5Diffusions', '8Diffusions'
+
