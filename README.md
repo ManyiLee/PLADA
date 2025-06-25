@@ -12,7 +12,7 @@
 > 
 > ✔️ ~~Upload Inference Code~~
 > 
-> ⏱️ Pretrained Weight and preprocessed datasets (Once our paper is accepted)
+> ⏱️ Pretrained Weight and Preprocessed Datasets (Once our paper is accepted)
 
 ## ⏳ Quick Start
 
