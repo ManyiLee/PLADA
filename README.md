@@ -1,4 +1,7 @@
-# PLADA
+# Pay Less Attention to Deceptive Artifacts (PLADA)
+<div align=center>
+<img width="350" alt="1723450312316" src="https://github.com/user-attachments/assets/83839e33-37a3-4cd0-a6cc-dc524e2cb5a7">  
+</div>
 
 >  ❗️❗️❗️ **News:**
 > 
