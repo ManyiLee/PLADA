@@ -5,7 +5,7 @@
 
 >  ❗️❗️❗️ **News:**
 > 
-> ✨2025.6.25: We release code of PLADA, a new deepfake detection framework addressing challenges in online social networks. You can find our work in [arXiv](aaaa) now !
+> ✨2025.6.25: We release code of PLADA, a new deepfake detection framework addressing challenges in online social networks. You can find our work in [arXiv](https://arxiv.org/abs/2506.20548) now !
 
 ## TODO List
 > ✔️ ~~Upload Traning Code~~
@@ -118,3 +118,22 @@ python train.py -g 0,1
 ```
 
 You can also adjust the training and testing argument by modifying the config file. By default, the checkpoints and features will be saved during the training process.
+
+
+## 📝 Citation
+
+<a href="#top">[Back to top]</a>
+
+If you find our work useful to your research, please cite it as follows:
+
+```
+@misc{li2025payattentiondeceptiveartifacts,
+      title={Pay Less Attention to Deceptive Artifacts: Robust Detection of Compressed Deepfakes on Online Social Networks}, 
+      author={Manyi Li and Renshuai Tao and Yufan Liu and Chuangchuang Tan and Haotong Qin and Bing Li and Yunchao Wei and Yao Zhao},
+      year={2025},
+      eprint={2506.20548},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2506.20548}, 
+}
+```
